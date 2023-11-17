@@ -15,7 +15,7 @@ function Modal({ currentPerson, closeModal }) {
           <div className='list-item'><b>Name:</b> {name} as Header</div>
           <div className='list-item'><b>Gender:</b> {gender}</div>
           <div className='list-item'><b>Height:</b> {height / 1000} in meters</div>
-          <div className='list-item'>{weight} convert to Kilo</div>
+          <div className='list-item'>weight convert to Kilo</div>
           <div className='list-item'> date added to api dd-MM-yyyy</div>
           <div className='list-item'>number of films</div>
           <div className='list-item'>birth year</div>
