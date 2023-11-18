@@ -1,9 +1,8 @@
 import React from 'react' // Import Suspense?
-import PropTypes from "prop-types";
 
 function Card({ person, openModal }) {
-  const { name, gender, height, imageId, url } = person
-  console.log(imageId)
+  const { name, gender, height, imageId } = person
+
   return (
     <div className='card' onClick={() => openModal(name)}>
       <img src={`https://picsum.photos/id/${imageId}/200`} />
@@ -13,10 +12,5 @@ function Card({ person, openModal }) {
     </div>
   )
 }
-
- Card.propTypes = {
-   name: PropTypes.string
- }
-
 
 export default Card

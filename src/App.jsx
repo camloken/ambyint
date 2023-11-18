@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react' // Import Suspense?
 import Card from './Card'
 import Modal from './Modal'
-import Axios from 'axios' // Move to component ???
+import Axios from 'axios'
 import './App.css'
 
 function App() {
@@ -13,8 +13,13 @@ function App() {
   useEffect(() => {
     Axios.get('https://swapi.dev/api/people/')
       .then( res => {
-        const peopleArray = res.data.results.map(p => {
-          p.imageId = Math.round((Math.random() * 100) / 1.15) // Create a number less than 90
+        const peopleArray = res.data.results
+        peopleArray.map(p => {
+          p.imageId = Math.floor((Math.random() * 100) / 1.15) // Create a number less than 90
+          Axios.get(p.homeworld).then( res2 => {
+            p.homeDetails = res2.data
+          })
+          .catch(error => console.log(error))
           return p
         })
         setPeople(peopleArray)

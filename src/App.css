@@ -5,33 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 .card-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -43,16 +16,18 @@
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 1px solid #555;
-  background-color: #444648;
-  padding: 20px;
-  border-radius: 8px;
+  border: 1px solid #54595C;
+  background-color: #42464a;
+  padding: 8px 8px 16px;
+  border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.50);
 }
 
 .card > img {
   background-color: #202020;
-  margin-bottom: 20px;
+  border: 1px solid #54595C;
+  margin-bottom: 10px;
+  border-radius: 4px;
   height: 196px; /* auto */
   width: 100%;
 }
@@ -60,22 +35,30 @@
 .card:hover {
   transform: scale(1.02);
   transition: 0.15s all ease-in;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.80);
 }
 
 .list-item {
-  margin-top: 10px;
+  font-size: 0.9rem;
+  padding-left: 10px;
+  margin-top: 5px;
+  text-align: left;
 }
 
 .modal {
   position: relative;
   display: flex;
   padding: 36px;
-  background-color: rgba(70,70,70, 1);
-  width: 600px;
+  background-color: #404448;
+  border: 1px solid #777;;
+  width: 710px;
   border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.80);
 }
 
 .modal > img {
+  border: 1px solid #505458;
+  border-radius: 4px;
   width: 300px;
   height: 300px;
 }
@@ -92,6 +75,13 @@
   background-color: rgba(0,0,0,0.80);
 }
 
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 0 10px 15px;
+  line-height: 1;
+}
+
 .modal-details {
   padding: 0 30px 0;
   display: flex;
@@ -101,17 +91,19 @@
 
 .close-btn {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  cursor: pointer;
+  top: -9px;
+  right: -9px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eee;
+  border: 2px solid #ddd;
+  background-color: #222;
   font-family: sans-serif;
-  color: #333;
+  color: #ddd;
   font-size: 20px;
-  height: 36px;
-  width: 36px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   line-height: 1;
 }

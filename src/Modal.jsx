@@ -1,25 +1,26 @@
-import React from 'react' // Import Suspense?
-import PropTypes from "prop-types";
+import React from 'react'
 import moment from 'moment'
 
 function Modal({ currentPerson, closeModal }) {
-  const { name, gender, height, url, imageId } = currentPerson
-  const randomId = Math.round((Math.random() * 100) / 1.15) // it seems like there are less than 100 photos
-  console.log(randomId)
+  const { name, created, gender, height, mass, films, birth_year, homeDetails, imageId } = currentPerson
+
   return (
     <div className='modal-background'>
       <div className='modal'>
         <div className='close-btn' onClick={() => closeModal()}>X</div>
         <img src={`https://picsum.photos/id/${imageId}/200`} />
         <div className='modal-details'>
-          <div className='list-item'><b>Name:</b> {name} as Header</div>
+          <div className='modal-title'>{name}</div>
           <div className='list-item'><b>Gender:</b> {gender}</div>
-          <div className='list-item'><b>Height:</b> {height / 1000} in meters</div>
-          <div className='list-item'>weight convert to Kilo</div>
-          <div className='list-item'> date added to api dd-MM-yyyy</div>
-          <div className='list-item'>number of films</div>
-          <div className='list-item'>birth year</div>
-          <div className='list-item'>Fetch Homeworld: name, terrain, climate, and number of residents</div>
+          <div className='list-item'><b>Height:</b> {height / 100} m</div>
+          <div className='list-item'><b>Weight:</b> {mass} kg</div>
+          <div className='list-item'><b>Date Created:</b> {moment(created).format('ddd MM, yyyy')}</div>
+          <div className='list-item'><b>Number of Films:</b> {films.length}</div>
+          <div className='list-item'><b>Birth Year:</b> {birth_year}</div>
+          <div className='list-item'><b>Home World:</b> {homeDetails.name}</div>
+          <div className='list-item'><b>Terrain:</b> {homeDetails.terrain}</div>
+          <div className='list-item'><b>Climate:</b> {homeDetails.climate}</div>
+          <div className='list-item'><b>Residents:</b> {homeDetails.residents.length}</div>
         </div>
       </div>
     </div>
