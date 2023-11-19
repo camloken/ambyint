@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react' // Import Suspense?
+import { useState, useEffect } from 'react'
 import Card from './Card'
 import Modal from './Modal'
-import Axios from 'axios'
+import axios from 'axios'
 import './App.css'
 
 function App() {
@@ -10,23 +10,42 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   const [currentPerson, setCurrentPerson] = useState({})
 
+//   useEffect(() => {
+//     axios.get('https://swapi.dev/api/people/')
+//       .then( res => {
+//         const peopleArray = res.data.results
+//         peopleArray.map(p => {
+//           p.imageId = Math.floor((Math.random() * 100) / 1.15) // Create a number less than 90
+//           axios.get(p.homeworld).then( res2 => {
+//             p.homeDetails = res2.data
+//             // p.home.terrain = res2.data.terrain
+//             // p.home.climate = res2.data.climate
+//             // p.home.pop = res2.data.pop
+//           })
+//           .catch(error => console.log(error))
+//           .finally(() => setIsLoading(false))
+//           return p
+//         })
+//         setPeople(peopleArray)
+//         console.log('people', peopleArray)
+//       })
+//       .catch(error => console.log(error))
+// 
+//   },[])
+
   useEffect(() => {
-    Axios.get('https://swapi.dev/api/people/')
-      .then( res => {
-        const peopleArray = res.data.results
-        peopleArray.map(p => {
-          p.imageId = Math.floor((Math.random() * 100) / 1.15) // Create a number less than 90
-          Axios.get(p.homeworld).then( res2 => {
-            p.homeDetails = res2.data
-          })
-          .catch(error => console.log(error))
-          return p
+    axios.get('https://swapi.dev/api/people/')
+      .then(res => {
+        const characters = res.data.results
+        characters.map(char => {
+          char.imageId = Math.floor((Math.random() * 100) / 1.15)
         })
-        setPeople(peopleArray)
+        setPeople(characters)
         setIsLoading(false)
-        console.log('people', peopleArray)
       })
-      .catch(error => console.log(error))
+      .catch(err => {
+        console.log(err)
+      })
   },[])
 
   function openModal(name) {
@@ -44,7 +63,11 @@ function App() {
     <>
       <h1>Star Wars Characters</h1>
         {isLoading 
-          ? <div>Loading...</div>
+          ? <div className='spinner-wrapper'>
+              <svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+              </svg>
+            </div>
           : <div className="card-wrap"> {
               people.map( person => {
               return <Card key={`person${person.name}`} person={person} openModal={openModal} />
