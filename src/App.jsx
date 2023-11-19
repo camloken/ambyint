@@ -10,29 +10,6 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   const [currentPerson, setCurrentPerson] = useState({})
 
-//   useEffect(() => {
-//     axios.get('https://swapi.dev/api/people/')
-//       .then( res => {
-//         const peopleArray = res.data.results
-//         peopleArray.map(p => {
-//           p.imageId = Math.floor((Math.random() * 100) / 1.15) // Create a number less than 90
-//           axios.get(p.homeworld).then( res2 => {
-//             p.homeDetails = res2.data
-//             // p.home.terrain = res2.data.terrain
-//             // p.home.climate = res2.data.climate
-//             // p.home.pop = res2.data.pop
-//           })
-//           .catch(error => console.log(error))
-//           .finally(() => setIsLoading(false))
-//           return p
-//         })
-//         setPeople(peopleArray)
-//         console.log('people', peopleArray)
-//       })
-//       .catch(error => console.log(error))
-// 
-//   },[])
-
   useEffect(() => {
     axios.get('https://swapi.dev/api/people/')
       .then(res => {
@@ -80,10 +57,3 @@ function App() {
 }
 
 export default App
-
-// Stretch Goal: In addition to pagination, we’d also like the React developer to implement searching and filtering. 
-// To search, the user should enter a character name (partial or complete) and have all matching results returned. 
-// For filtration, the user should be able to select either the homeworld, film, or species of any character and see results. 
-// Don’t forget to combine the search with filters.
-// 
-// Stretch Goal: Add an integration test for testing the modal opens with the correct person’s information.
